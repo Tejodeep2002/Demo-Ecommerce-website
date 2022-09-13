@@ -9,7 +9,6 @@ function FrontPage() {
 
   const {state:{products}}=CartState();
 
-  console.log(products)
   return (
     <>
         <div className='allItems'>

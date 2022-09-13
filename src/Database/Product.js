@@ -141,7 +141,7 @@ const products = [
             size:"L"
         },
         instock:true,
-        quantity:5
+        quantity:6
     },
     {
         id:12,

@@ -2,10 +2,6 @@ import React from 'react'
 
 function CheckoutList() {
 
-
-
-
-    
   return (
     <>
         <div className='checkout-allItems'>
