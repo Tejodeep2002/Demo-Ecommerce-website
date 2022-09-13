@@ -1,12 +1,15 @@
 import React from 'react'
 import ItemsTable from '../Components/ItemsTable';
 import OptionBar from '../Components/OptionBar';
+import { CartState } from '../context/Context';
 import '../Css/FrontPage.css';
-import getProducts from '../Database/Product'
-
-const products=getProducts();
+ 
 
 function FrontPage() {
+
+  const {state:{products}}=CartState();
+
+  console.log(products)
   return (
     <>
         <div className='allItems'>

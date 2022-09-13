@@ -1,7 +1,7 @@
 import React from 'react'
 import CheckoutList from '../Components/CheckoutList'
 import '../Css/Cart.css'
-function Cart() {
+function CheckoutPage() {
   return (
     <>
       <CheckoutList/> 
@@ -9,4 +9,4 @@ function Cart() {
   )
 }
 
-export default Cart
+export default CheckoutPage

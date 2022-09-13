@@ -2,11 +2,6 @@ import React from 'react';
 import { BsCart3 ,BsEmojiSmileFill } from 'react-icons/bs'
 
 function ItemsTable(props) {
-
-  
-
-  
-
   return (
     <>
         <div className='table_area'>                  
