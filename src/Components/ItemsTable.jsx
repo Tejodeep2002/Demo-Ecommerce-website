@@ -2,6 +2,11 @@ import React from 'react';
 import { BsCart3 ,BsEmojiSmileFill } from 'react-icons/bs'
 
 function ItemsTable(props) {
+
+  
+
+  
+
   return (
     <>
         <div className='table_area'>                  
@@ -27,7 +32,7 @@ function ItemsTable(props) {
                             <td>
                             <div className='dataKart'>
                                     <button className='cartUpdate' disabled>5659</button>
-                                    <button className='cart-btn' onClick={()=>this.handelAddKart(product)}><BsCart3 color="white"/></button>
+                                    <button className='cart-btn' ><BsCart3 color="white"/></button>
                                     <input type="checkbox"/>
                             </div>
                             </td>

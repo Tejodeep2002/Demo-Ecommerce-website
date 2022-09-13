@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function OptionBar() {
   return (
@@ -32,7 +33,7 @@ function OptionBar() {
                     </div>
 
                     <div>
-                        <input type="button" className='cartbutton' value="Add to Cart" />
+                        <Link to="/Cart"><input type="button" className='cartbutton' value="Add to Cart" /></Link>
                     </div>
                 </div>
     </div>
