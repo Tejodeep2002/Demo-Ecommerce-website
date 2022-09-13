@@ -1,10 +1,13 @@
 import React from 'react';
 import { BsCart3 ,BsEmojiSmileFill } from 'react-icons/bs'
 import { ImSad2 } from 'react-icons/im'
+import { CartState } from '../context/Context';
 
 function ItemsTable(props) {
 
-  const color =()=>{}
+  const { state:{ cart },dispatch} = CartState();
+
+  console.log(cart)
  
   return (
     <>
@@ -30,9 +33,18 @@ function ItemsTable(props) {
                             <td>${product.price}</td>
                             <td>
                             <div className='dataKart'>
-                                    <button className='cartUpdate' disabled>5659</button>
-                                    <button className='cart-btn' disabled={(product.quantity<=0)? "Disable": null}><BsCart3 color="white"/></button>
-                                    <input type="checkbox"/>
+                                    <input type="number" className='cartUpdate' id="items_no"/>
+                                    {(product.quantity>0)? (
+                                      <button className='cart-btn' onClick={()=>{
+                                        dispatch({
+                                          type: "ADD_TO_CART",
+                                          payload: product,
+                                        })
+                                      }} ><BsCart3 color="white"/></button>
+                                    ):(
+                                      <button className='cart-btn-dis' disabled="disabled" ><BsCart3 color="white"/></button>
+                                    )}
+                                    <input type="checkbox" />
                             </div>
                             </td>
                         </tr>

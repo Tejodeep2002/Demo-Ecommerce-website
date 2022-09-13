@@ -1,3 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Rubik+Dirt&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body{
+    font-family: Ubuntu;
+}
+
 .checkout-allItems{
-    margin:4rem 6rem;
+    margin:0rem 6rem;
+    display: flex;
+}
+
+.btn{
+    margin: 2rem 6rem;
+}
+
+.checkout-table-area{
+    width: 60%;
+    margin-right: 4rem;
+}
+.checkout-table{
+    width: 100%;
+}
+.checkout-table thead tr{
+    border-bottom: 2px solid;
+}
+.checkout-table th{
+    padding: 1rem 3rem;
+}
+.checkout-table tbody td{
+    padding-left: 1rem;
+}
+
+.Total_box{
+    width: 18rem;
+}
+.CartTotals{
+    font-size: 24px;
+}
+.Subtotal{
+    border-bottom: 0.5px solid black;
+    margin-top: 1rem;
+    padding-bottom:10px;
+    font-size: 0.9rem;
+    font-weight:500;
+}
+.Total{
+    font-size: 1rem;
+    margin: 0.8rem 0rem;
+    font-weight: bold;
+}
+.total-price{
+    padding-left: 12rem;
+}
+.sub-total-price{
+    padding-left: 11rem;
+}
+.proceed-btn{
+    height:2.5rem;
+    width:18rem;
+    background-color: #1246af;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    font-size: 13px;
+    font-weight:bolder;
 }

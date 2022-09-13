@@ -8,7 +8,7 @@ function Context({children}) {
 
     const [state, dispatch] = useReducer(cartReducer, {
         products:getProducts(),
-        Cart:[]
+        cart:[]
     });
     
     

@@ -9,11 +9,13 @@ function FrontPage() {
 
   const {state:{products}}=CartState();
 
+  
+
   return (
     <>
         <div className='allItems'>
             <OptionBar/>
-            <ItemsTable products={products}/>
+            <ItemsTable products={products} />
         </div>
     </>
   )
