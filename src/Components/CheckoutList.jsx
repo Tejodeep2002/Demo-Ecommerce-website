@@ -6,7 +6,7 @@ import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 
 function CheckoutList() {
 
-  const { state:{cart},despatch }=CartState();
+  const { state:{cart},dispatch }=CartState();
   const [total,setTotal] = useState();
   useEffect(()=>{
     setTotal(cart.reduce((acc,curr)=> acc+Number(curr.price),0));
@@ -28,11 +28,16 @@ function CheckoutList() {
                         {cart.map(product=>
                         <tr key={product.id}>
                             
-                            <td colSpan="2"><button className='btn-remove'><ImCross/></button>
+                            <td colSpan="2"><button className='btn-remove' onClick={()=>{
+                              dispatch({
+                                type: "REMOVE_FROM_CART",
+                                payload:product
+                              })
+                            }}><ImCross/></button>
                             <img src={product.image} width="50px" height="60px" alt="Loading" />
                             {product.name}-{product.description.color}</td>
                             <td>${product.price}</td>
-                            <td ><AiOutlinePlus/>56<AiOutlineMinus/></td>
+                            <td ><AiOutlinePlus/>{product.quantity}<AiOutlineMinus/></td>
                             <td>${product.price}</td>
 
                             {/* <td>

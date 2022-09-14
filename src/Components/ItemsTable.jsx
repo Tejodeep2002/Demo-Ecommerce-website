@@ -14,21 +14,35 @@ function ItemsTable(props) {
     setItems(element.target.value);
     
   }
-
+console.log(cart);
   const addCart=(stock,product,id)=>{
-    if(items<=stock){
-      dispatch({
-      type: "ADD_TO_CART",
-      payload: product
-    })
+    if(items<=stock && items>0){
+      if(cart.length===0){
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: product
+        })
+      }
+      cart.map((c)=>{
+        console.log(c);
+        (c.id!==id) ?
+          dispatch({
+            type: "ADD_TO_CART",
+            payload: product
+          }):dispatch({
+            type: "CHANGE_CART_QUANTITY",
+            payload: {
+              id:product.id,
+              quantity:items
+            }
+          })
+      })
     }
     else{
       alert("Your Requested exceeded");
     }
   }
 
-  console.log(cart);
- 
   return (
     <>
         <div className='table_area'>                  
