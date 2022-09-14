@@ -9,9 +9,6 @@ function FrontPage() {
 
   const {state:{products}}=CartState();
 
-  
-  
-
   return (
     <>
         <div className='allItems'>
