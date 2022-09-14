@@ -27,7 +27,10 @@ body{
     padding: 1rem 3rem;
 }
 .checkout-table tbody td{
-    padding-left: 1rem;
+    padding-left: 2rem;
+}
+.btn-remove{
+    border:none;
 }
 
 .Total_box{

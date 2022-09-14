@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CartState } from '../context/Context';
 import { ImCross } from 'react-icons/im'
+import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 
 
 function CheckoutList() {
@@ -11,14 +12,13 @@ function CheckoutList() {
     setTotal(cart.reduce((acc,curr)=> acc+Number(curr.price),0));
   },[cart]);
 
-  console.log(cart);
   return (
     <>
       <div className='checkout-table-area'>
         <table className='checkout-table'>
                     <thead>
-                      <tr>                        
-                            <th colSpan="2" >Product</th>                        
+                      <tr>                                               
+                            <th colSpan={2}>Product</th>                        
                             <th>Price</th>                        
                             <th>Quantity</th>                        
                             <th>Subtotal</th>                              
@@ -27,9 +27,12 @@ function CheckoutList() {
                     <tbody>
                         {cart.map(product=>
                         <tr key={product.id}>
-                            <td><ImCross/></td>
-                            <td><img src={product.image} width="50px" height="60px" alt="Loading" /></td>
-                            <td>{product.name}-{product.description.color}</td>
+                            
+                            <td colSpan="2"><button className='btn-remove'><ImCross/></button>
+                            <img src={product.image} width="50px" height="60px" alt="Loading" />
+                            {product.name}-{product.description.color}</td>
+                            <td>${product.price}</td>
+                            <td ><AiOutlinePlus/>56<AiOutlineMinus/></td>
                             <td>${product.price}</td>
 
                             {/* <td>
