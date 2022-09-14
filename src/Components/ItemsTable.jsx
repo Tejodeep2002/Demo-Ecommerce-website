@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsCart3 ,BsEmojiSmileFill } from 'react-icons/bs'
 import { ImSad2 } from 'react-icons/im'
 import { CartState } from '../context/Context';
@@ -7,7 +7,27 @@ function ItemsTable(props) {
 
   const { state:{ cart },dispatch} = CartState();
 
-  console.log(cart)
+  const[items,setItems] = useState(0);
+
+  const addItem=(element)=>{
+    console.log(element.target.value);
+    setItems(element.target.value);
+    
+  }
+
+  const addCart=(stock,product,id)=>{
+    if(items<=stock){
+      dispatch({
+      type: "ADD_TO_CART",
+      payload: product
+    })
+    }
+    else{
+      alert("Your Requested exceeded");
+    }
+  }
+
+  console.log(cart);
  
   return (
     <>
@@ -33,14 +53,9 @@ function ItemsTable(props) {
                             <td>${product.price}</td>
                             <td>
                             <div className='dataKart'>
-                                    <input type="number" className='cartUpdate' id="items_no"/>
+                                    <input type="number" className='cartUpdate' id="items_no" onChange={addItem}/>
                                     {(product.quantity>0)? (
-                                      <button className='cart-btn' onClick={()=>{
-                                        dispatch({
-                                          type: "ADD_TO_CART",
-                                          payload: product,
-                                        })
-                                      }} ><BsCart3 color="white"/></button>
+                                      <button className='cart-btn' onClick={()=>addCart(product.instock,product,product.id)} ><BsCart3 color="white"/></button>
                                     ):(
                                       <button className='cart-btn-dis' disabled="disabled" ><BsCart3 color="white"/></button>
                                     )}

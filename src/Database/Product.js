@@ -10,8 +10,8 @@ const products = [
             color:"black",
             size:"XL",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:2,
@@ -23,8 +23,8 @@ const products = [
             color:"grey",
             size:"L",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:3,
@@ -36,8 +36,8 @@ const products = [
             color:"pink",
             size:"XL",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:4,
@@ -49,8 +49,8 @@ const products = [
             color:"purple",
             size:"XL",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:5,
@@ -62,8 +62,8 @@ const products = [
             color:"blue",
             size:"XL",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:6,
@@ -75,8 +75,8 @@ const products = [
             color:"black",
             size:"XL",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:7,
@@ -88,8 +88,8 @@ const products = [
             color:"blue",
             size:"M",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:8,
@@ -101,8 +101,8 @@ const products = [
             color:"black",
             size:"L",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:9,
@@ -114,8 +114,8 @@ const products = [
             color:"orenge",
             size:"XL",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:10,
@@ -127,8 +127,8 @@ const products = [
             color:"white",
             size:"M",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:11,
@@ -140,8 +140,8 @@ const products = [
             color:"brown",
             size:"L"
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     },
     {
         id:12,
@@ -153,8 +153,8 @@ const products = [
             color:"black",
             size:"XL",
         },
-        instock:true,
-        quantity:5
+        instock:5,
+        quantity:1
     }
 ];
 
