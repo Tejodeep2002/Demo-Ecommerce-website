@@ -6,8 +6,19 @@ import '../Css/FrontPage.css';
  
 
 function FrontPage() {
+  
+  const {state:{products},
+      productState:{byCategory,bySize,searchQuery}}=CartState();
 
-  const {state:{products}}=CartState();
+
+  const transformProducts=()=>{
+    let filteredProducts = products; 
+
+    if(byCategory){
+      filteredProducts = filteredProducts.filter((prod)=> prod.Category);
+      console.log(filteredProducts);
+    }
+  }
 
   return (
     <>

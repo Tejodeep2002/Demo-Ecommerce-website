@@ -24,19 +24,28 @@ body{
     color:white;
     box-shadow: 0px 0px;
 }
+.filter{
+    display: flex;
+}
 
 .resetbtn{
     display: flex;
     justify-content: center;
     margin-left:10px;
-    color:#00a0c6;
+    
+}
+.resetbtn button{
+    border:none;
+    display: flex;
 }
 
 .resetbtn p{
     margin: 0px;
+    color:#00a0c6;
 }
 .resetbtn i{
     padding-top:5px;
+    color:#00a0c6;
 }
 
 .searcharea{
@@ -112,3 +121,19 @@ body{
 
 
 
+@media screen and (max-width: 393px) {
+    
+    .optionbar{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .searcharea{
+        margin-left:3rem;
+    }
+    .dropbtn{
+        padding-left: 10px;
+        width:5rem;
+        height: 1.8rem;
+        margin-right: 7px;
+    }
+  }

@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import Context from './context/Context';
 import 'bootstrap/dist/css/bootstrap.css';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CheckoutPage from './Pages/CheckoutPage';
 import FrontPage from './Pages/FrontPage'
 
@@ -13,12 +12,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Context>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<FrontPage/>}/>
           <Route path="/Cart" element={<CheckoutPage/>}/>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </Context>
   </React.StrictMode>
 );

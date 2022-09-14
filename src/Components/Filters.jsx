@@ -7,8 +7,6 @@ function Filters() {
     productDispatch}=CartState();
     console.log(productState);
 
-  
-
   return (
     <>
         <div className='filter'>
@@ -24,8 +22,6 @@ function Filters() {
                 <option value="Polo">Polo</option>
                 <option value="Trouser">Trouser</option>
             </select> 
-        </div>
-        <div className='filter'>
             <select className='dropbtn' onChange={(f)=>{
                 productDispatch({
                     type: "FILTER_BY_SIZE",
@@ -38,10 +34,15 @@ function Filters() {
                 <option value="XL">XL</option>
                 <option value="XXL">XXL</option>
             </select>
+            <div className='resetbtn'>
+                <button onClick={()=>{ 
+                    productDispatch({
+                        type: "CLEAR_FILTER"
+                    })
+                }}><i className="fa-solid fa-arrow-rotate-left"></i> <p>Reset</p></button>
         </div>
-        <div className='resetbtn'>
-        <i className="fa-solid fa-arrow-rotate-left"></i> <p>Reset</p>
         </div>
+        
         
       
     </>
