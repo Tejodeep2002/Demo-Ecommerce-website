@@ -7,9 +7,7 @@ function OptionBar() {
     <div>
       <div className='optionbar'>
         <Filters/>
-        <div className='resetbtn'>
-        <i className="fa-solid fa-arrow-rotate-left"></i> <p>Reset</p>
-        </div>
+        
 
         <div className='searcharea'>
            <p> Search:</p><input type="text" id="SearchInput" />

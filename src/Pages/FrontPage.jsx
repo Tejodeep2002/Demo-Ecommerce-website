@@ -10,6 +10,7 @@ function FrontPage() {
   const {state:{products}}=CartState();
 
   
+  
 
   return (
     <>
