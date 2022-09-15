@@ -9,7 +9,7 @@ function CheckoutList() {
   const { state:{cart},dispatch }=CartState();
   const [total,setTotal] = useState();
   useEffect(()=>{
-    setTotal(cart.reduce((acc,curr)=> acc+Number(curr.price),0));
+    setTotal(cart.reduce((acc,curr)=> acc+Number(curr.price*curr.quantity),0));
   },[cart]);
 
   return (
@@ -37,24 +37,7 @@ function CheckoutList() {
                             {product.name}-{product.description.color}</td>
                             <td>${product.price}</td>
                             <td ><AiOutlinePlus/>{product.quantity}<AiOutlineMinus/></td>
-                            <td>${product.price}</td>
-
-                            {/* <td>
-                            <div className='dataKart'>
-                                    <input type="number" className='cartUpdate' id="items_no"/>
-                                    {(product.quantity>0)? (
-                                      <button className='cart-btn' onClick={()=>{
-                                        dispatch({
-                                          type: "ADD_TO_CART",
-                                          payload: product,
-                                        })
-                                      }} ><BsCart3 color="white"/></button>
-                                    ):(
-                                      <button className='cart-btn-dis' disabled="disabled" ><BsCart3 color="white"/></button>
-                                    )}
-                                    <input type="checkbox" />
-                            </div>
-                            </td> */}
+                            <td>${product.price * product.quantity}</td>
                         </tr>
                         )}
                     </tbody>

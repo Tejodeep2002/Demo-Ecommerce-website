@@ -15,8 +15,6 @@ function CheckoutPage() {
         
         <CheckoutList/> 
       </div>
-
-      
     </>
   )
 }

@@ -119,21 +119,33 @@ body{
     padding-left: 10px;
 }
 
-
-
 @media screen and (max-width: 393px) {
     
-    .optionbar{
-        display: flex;
-        flex-direction: column-reverse;
-    }
+
     .searcharea{
-        margin-left:3rem;
+        margin-left:0.5rem;
     }
     .dropbtn{
         padding-left: 10px;
         width:5rem;
         height: 1.8rem;
         margin-right: 7px;
+    }
+    .resetbtn{
+        display: flex;
+        justify-content: center;
+        margin-left:2px;
+    }
+    .searcharea input{
+        border: none;
+        box-shadow: 1px 1px 2px 2px #888888 inset;
+        height: 30px;
+        width: 6rem;
+        margin-left: 6px;
+    }
+
+    .cartbutton{
+        padding: 3px 2px;
+        margin-left:26px
     }
   }

@@ -69,3 +69,77 @@ body{
 }
 
 
+@media screen and (max-width: 393px) {
+    .checkout-allItems{
+        margin:0rem 6rem;
+        display: flex;
+        flex-direction: row-reverse;
+        
+    }
+
+    .btn{
+        margin: 2rem 2rem;
+    }
+
+    .btn-remove{
+        border:none;
+    }
+
+    .Total_box{
+        width: 12rem;
+    }
+    .CartTotals{
+        font-size: 22px;
+    }
+    .Subtotal{
+        border-bottom: 0.5px solid black;
+        margin-top: 1rem;
+        padding-bottom:10px;
+        font-size: 0.7rem;
+        font-weight:500;
+    }
+    .Total{
+        font-size: 0.7rem;
+        margin: 0.8rem 0rem;
+        font-weight: bold;
+    }
+    .total-price{
+        padding-left: 9rem;
+    }
+    .sub-total-price{
+        padding-left: 8rem;
+    }
+    .proceed-btn{
+        height:2.5rem;
+        width:12rem;
+        background-color: #1246af;
+        color: white;
+        border: none;
+        border-radius: 2rem;
+        font-size: 13px;
+        font-weight:bolder;
+    }
+
+    .checkout-table-area{
+        width: 0;
+        margin-right: 4rem;
+    }
+    .checkout-table{
+        width:80%;
+        margin-left: 1rem;
+    }
+    .checkout-table thead tr{
+        border-bottom: 2px solid;
+    }
+    .checkout-table th{
+        padding: 1rem 3rem;
+    }
+    .checkout-table tbody td{
+        padding-left: 1rem;
+    }
+    .btn-remove{
+        border:none;
+    }
+    
+    
+  }
