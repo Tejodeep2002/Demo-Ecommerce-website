@@ -3,9 +3,7 @@ import { CartState } from '../context/Context';
 
 function Filters() {
 
-    const {productState,
-    productDispatch}=CartState();
-    console.log(productState);
+    const {productState,productDispatch}=CartState();
 
   return (
     <>
@@ -17,10 +15,10 @@ function Filters() {
                 })
             }} >
                 <option>Filter</option>
-                <option value="Hoodie">Hoodie</option>
-                <option value="Jeans">Jeans</option>
-                <option value="Polo">Polo</option>
-                <option value="Trouser">Trouser</option>
+                <option value="hoodie">Hoodie</option>
+                <option value="jeans">Jeans</option>
+                <option value="polo">Polo</option>
+                <option value="trouser">Trouser</option>
             </select> 
             <select className='dropbtn' onChange={(f)=>{
                 productDispatch({
@@ -42,9 +40,6 @@ function Filters() {
                 }}><i className="fa-solid fa-arrow-rotate-left"></i> <p>Reset</p></button>
         </div>
         </div>
-        
-        
-      
     </>
   )
 }

@@ -18,16 +18,15 @@ function CheckoutList() {
         <table className='checkout-table'>
                     <thead>
                       <tr>                                               
-                            <th colSpan={2}>Product</th>                        
-                            <th>Price</th>                        
-                            <th>Quantity</th>                        
-                            <th>Subtotal</th>                              
+                          <th colSpan={2}>Product</th>                        
+                          <th>Price</th>                        
+                          <th>Quantity</th>                        
+                          <th>Subtotal</th>                              
                       </tr>
                     </thead>
                     <tbody>
                         {cart.map(product=>
                         <tr key={product.id}>
-                            
                             <td colSpan="2"><button className='btn-remove' onClick={()=>{
                               dispatch({
                                 type: "REMOVE_FROM_CART",

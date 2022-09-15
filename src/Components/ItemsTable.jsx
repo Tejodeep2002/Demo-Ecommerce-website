@@ -11,11 +11,9 @@ function ItemsTable(props) {
   const[items,setItems] = useState(0);
 
   const addItem=(element)=>{
-    console.log(element.target.value);
     setItems(element.target.value);
     
   }
-console.log(cart);
   const addCart=(stock,product,id)=>{
     if(items<=stock && items>0){
       if(cart.length===0){
@@ -25,7 +23,6 @@ console.log(cart);
         })
       }
       cart.map((c)=>{
-        console.log(c);
         (c.id!==id) ?
           dispatch({
             type: "ADD_TO_CART",
@@ -43,7 +40,6 @@ console.log(cart);
       alert("Your Requested exceeded");
     }
   }
-
   return (
     <>
         <div className='table_area'>                  
@@ -82,7 +78,6 @@ console.log(cart);
                     </tbody>
                     </table>
                 </div>
-      
     </>
   )
 }

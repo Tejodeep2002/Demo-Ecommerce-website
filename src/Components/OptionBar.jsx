@@ -23,12 +23,9 @@ function OptionBar() {
 
           <div>
             <Link to="/Cart"><input type="button" className='cartbutton' value="Add to Cart" /></Link>
-        
-        </div> 
+          </div> 
         </div>
-
-        
-                </div>
+      </div>
     </div>
   )
 }

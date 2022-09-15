@@ -5,7 +5,7 @@ const products = [
         name: "Woo Ninja",
         image: "./images/hoodie-1.jpg",
         price: "35.00",
-        category:"Hoodies",
+        category:"hoodie",
         description:{
             color:"black",
             size:"XL",
@@ -18,7 +18,7 @@ const products = [
         name: "Grey Ninja",
         image: "./images/hoodie-2.jpg",
         price: "35.00",
-        category:"Hoodies",
+        category:"hoodie",
         description:{
             color:"grey",
             size:"L",
@@ -31,7 +31,7 @@ const products = [
         name: "Rose Ninja",
         image: "./images/hoodie-3.jpg",
         price: "35.00",
-        category:"Hoodies",
+        category:"hoodie",
         description:{
             color:"pink",
             size:"XL",
@@ -44,7 +44,7 @@ const products = [
         name: "Wow Hoodie",
         image: "./images/hoodie-4.jpg",
         price: "35.00",
-        category:"Hoodies",
+        category:"hoodie",
         description:{
             color:"purple",
             size:"XL",
