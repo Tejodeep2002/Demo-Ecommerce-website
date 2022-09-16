@@ -22,7 +22,7 @@ function ItemsTable(props) {
           payload: product
         })
       }
-      cart.map((c)=>{
+      cart.map(c=>{
         (c.id!==id) ?
           dispatch({
             type: "ADD_TO_CART",
@@ -34,7 +34,7 @@ function ItemsTable(props) {
               quantity:items
             }
           })
-      })
+      });
     }
     else{
       alert("Your Requested exceeded");

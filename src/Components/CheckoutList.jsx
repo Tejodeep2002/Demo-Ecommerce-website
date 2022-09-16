@@ -49,7 +49,8 @@ function CheckoutList() {
         <div className='Subtotal'>Subtotal<span className='sub-total-price'>${total}</span></div>
         <div className='Total'>Total<span className='total-price'>${total}</span></div>
         <div>
-          <Link to="/Thankyou"><button className='proceed-btn'>PROCEED TO CHECKOUT</button></Link>
+          {(cart.length!==0) ? <Link to="/Thankyou"><button className='proceed-btn'>PROCEED TO CHECKOUT</button></Link>
+          : <button className='proceed-btn'>PROCEED TO CHECKOUT</button>}
         </div>
       </div>
     </>

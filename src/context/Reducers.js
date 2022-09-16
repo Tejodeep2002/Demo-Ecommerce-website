@@ -9,8 +9,7 @@ export const cartReducer=(state,action)=>{
         case "CHANGE_CART_QUANTITY":
             return {...state,cart:state.cart.filter(c=>c.id===action.payload.id ? c.quantity=action.payload.quantity : c.quantity)
             };
-        case "INCREMENT":
-
+        
         default:
             return state;
     };
