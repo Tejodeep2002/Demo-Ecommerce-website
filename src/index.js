@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import CheckoutPage from './Pages/CheckoutPage';
 import FrontPage from './Pages/FrontPage'
-
+import Thankyou from './Pages/Thankyou';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +16,7 @@ root.render(
         <Routes>
           <Route path="/" element={<FrontPage/>}/>
           <Route path="/Cart" element={<CheckoutPage/>}/>
+          <Route path="/Thankyou" element={<Thankyou/>}/>
         </Routes>
       </HashRouter>
     </Context>

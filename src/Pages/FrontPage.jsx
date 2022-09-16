@@ -22,9 +22,10 @@ function FrontPage() {
       console.log(filteredProducts);
     }
     if(searchQuery){
-      filteredProducts = filteredProducts.filter((prod)=>{
-        prod.name.toLowerCase().includes(searchQuery);
-      });
+      filteredProducts = filteredProducts.filter((prod)=>
+        prod.name.toLowerCase().includes(searchQuery)
+      );
+      console.log(filteredProducts)
     }
 
     return filteredProducts;

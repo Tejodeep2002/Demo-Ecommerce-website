@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { CartState } from '../context/Context';
 import { ImCross } from 'react-icons/im'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
-
+import { Link } from 'react-router-dom'
 
 function CheckoutList() {
 
@@ -49,7 +49,7 @@ function CheckoutList() {
         <div className='Subtotal'>Subtotal<span className='sub-total-price'>${total}</span></div>
         <div className='Total'>Total<span className='total-price'>${total}</span></div>
         <div>
-          <button className='proceed-btn'>PROCEED TO CHECKOUT</button>
+          <Link to="/Thankyou"><button className='proceed-btn'>PROCEED TO CHECKOUT</button></Link>
         </div>
       </div>
     </>
