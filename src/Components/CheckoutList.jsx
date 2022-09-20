@@ -44,6 +44,7 @@ function CheckoutList() {
     alert("Your Requested exceeded");
   }
   }
+  console.log(cart);
 
   return (
     <>
