@@ -14,9 +14,12 @@ function ItemsTable(props) {
     setItems(element.target.value);
     
   }
+  
   const addCart=(stock,product,id)=>{
-    if(items<=stock && items>0){
+    if(items!=0){
+      if(items<=stock && items>0){
       if(cart.length===0){
+        product.quantity=items
         dispatch({
           type: "ADD_TO_CART",
           payload: product
@@ -39,6 +42,7 @@ function ItemsTable(props) {
     else{
       alert("Your Requested exceeded");
     }
+  }
   }
   return (
     <>
@@ -66,7 +70,7 @@ function ItemsTable(props) {
                             <div className='dataKart'>
                                     <input type="number" className='cartUpdate' id="items_no" onChange={addItem}/>
                                     {(product.quantity>0)? (
-                                      <button className='cart-btn' onClick={()=>addCart(product.instock,product,product.id)} ><BsCart3 color="white"/></button>
+                                      <button className='cart-btn' onClick={()=>addCart(product.instock,product,product.id,)} ><BsCart3 color="white"/></button>
                                     ):(
                                       <button className='cart-btn-dis' disabled="disabled" ><BsCart3 color="white"/></button>
                                     )}

@@ -12,6 +12,39 @@ function CheckoutList() {
     setTotal(cart.reduce((acc,curr)=> acc+Number(curr.price*curr.quantity),0));
   },[cart]);
 
+
+  const increment=(product)=>{
+    if(product.quantity<product.instock && product.quantity!=0){
+      product.quantity=(parseInt(product.quantity)+1)
+    dispatch({
+          type: "CHANGE_CART_QUANTITY",
+          payload: {
+            id:product.id,
+            quantity:product.quantity
+          }
+        })
+    }
+  else{
+    alert("Your Requested exceeded");
+  }
+  }
+
+  const decrement=(product,stock)=>{
+    if(product.quantity<product.instock ){
+    product.quantity=(parseInt(product.quantity)-1)
+    dispatch({
+          type: "CHANGE_CART_QUANTITY",
+          payload: {
+            id:product.id,
+            quantity:product.quantity
+          }
+        })
+    }
+  else{
+    alert("Your Requested exceeded");
+  }
+  }
+
   return (
     <>
       <div className='checkout-table-area'>
@@ -36,7 +69,7 @@ function CheckoutList() {
                             <img src={product.image} width="50px" height="60px" alt="Loading" />
                             {product.name}-{product.description.color}</td>
                             <td>${product.price}</td>
-                            <td ><AiOutlinePlus/>{product.quantity}<AiOutlineMinus/></td>
+                            <td><AiOutlinePlus onClick={()=>increment(product,product.instock)}/> {product.quantity}  <AiOutlineMinus onClick={()=>decrement(product)}/></td>
                             <td>${product.price * product.quantity}</td>
                         </tr>
                         )}
