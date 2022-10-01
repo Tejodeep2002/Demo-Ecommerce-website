@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { BsCart3 ,BsEmojiSmileFill } from 'react-icons/bs'
 import { ImSad2 } from 'react-icons/im'
 import { CartState } from '../context/Context';
@@ -6,22 +7,33 @@ import { CartState } from '../context/Context';
 function ItemsTable(props) {
 
   const { state:{ cart },dispatch} = CartState();
+  const [itemsarray,setItemsArray] = useState([])
 
-  let itemsarray=[];
+  // let itemsList=[];
 
-  console.log(cart)
+ 
+
+  // console.log(cart)
   const addItem=(element)=>{
-    itemsarray[element.target.id-1]={
+    const itemsList={
       id:element.target.id,
-      quantity:element.target.value
+      quantity:parseInt(element.target.value)
     };
-    // setItems([...items,items[element.target.id-1]=element.target.value]);
-    console.log(itemsarray);
+    const cpItemsarray = itemsarray;
+    console.log(cpItemsarray )
+    cpItemsarray[element.target.id-1]=itemsList;
+    console.log(cpItemsarray);
+
+    setItemsArray(cpItemsarray);
+    // console.log(itemsList);
+    // console.log(itemsarray);
   }
-   const addCart=(stock,product,id)=>{
-    console.log(id);
+
+
+   const addCart=(stock,product)=>{
+    console.log(product.id);
     itemsarray.map((items)=>{
-      if(items.id==id){
+      if(items.id==product.id){
         if(items.quantity<=stock && items.quantity>0 ){
           if(cart.length===0){
             product.quantity=items.quantity;
@@ -31,18 +43,22 @@ function ItemsTable(props) {
             })
           }
           cart.map(c=>{
-            (c.id!==id) ?
+            if(c.id!==product.id ){
+              product.quantity=items.quantity
               dispatch({
                 type: "ADD_TO_CART",
                 payload: product
-              }):
-              dispatch({
-                type: "CHANGE_CART_QUANTITY",
-                payload:{
-                  id:product.id,
-                  quantity:items
-                }
-              })
+              })}
+              else{
+              // dispatch({
+              //   type: "CHANGE_CART_QUANTITY",
+              //   payload:{
+              //     id:product.id,
+              //     quantity:items.quantity
+              //   }
+              // })
+              console.log("Cart item quantity update")
+            }
           });
         }
         else{
@@ -50,9 +66,10 @@ function ItemsTable(props) {
         }
       }
       else{
-        console.log(id);
+        console.log(product.id);
         console.log(items.id);
       }
+      
     }) 
   }
   return (
@@ -81,7 +98,7 @@ function ItemsTable(props) {
                       <div className='dataKart'>
                               <input type="number" className='cartUpdate' id={product.id} onChange={addItem}/>
                               {(product.quantity>0)? (
-                                <button className='cart-btn' onClick={()=>addCart(product.instock,product,product.id)} ><BsCart3 color="white"/></button>
+                                <button className='cart-btn' onClick={()=>addCart(product.instock,product)} ><BsCart3 color="white"/></button>
                               ):(
                                 <button className='cart-btn-dis' disabled="disabled" ><BsCart3 color="white"/></button>
                               )}
