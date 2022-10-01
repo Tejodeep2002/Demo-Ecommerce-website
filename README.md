@@ -1,5 +1,5 @@
 
-Link--->>https://tejodeep2002.github.io/Demo-Ecommercy/
+Link--->>https://tejodeep2002.github.io/Demo-Ecommerce-website/#/
 
 
 # Getting Started with Create React App
