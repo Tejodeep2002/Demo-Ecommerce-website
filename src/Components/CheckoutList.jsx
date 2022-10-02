@@ -14,7 +14,7 @@ function CheckoutList() {
 
 
   const increment=(product)=>{
-    if(product.quantity<product.instock && product.quantity!=0){
+    if(product.quantity<product.instock){
       product.quantity=(parseInt(product.quantity)+1)
     dispatch({
           type: "CHANGE_CART_QUANTITY",
@@ -29,8 +29,8 @@ function CheckoutList() {
   }
   }
 
-  const decrement=(product,stock)=>{
-    if(product.quantity<product.instock ){
+  const decrement=(product)=>{
+    // if(product.quantity>product.instock ){
     product.quantity=(parseInt(product.quantity)-1)
     dispatch({
           type: "CHANGE_CART_QUANTITY",
@@ -39,10 +39,8 @@ function CheckoutList() {
             quantity:product.quantity
           }
         })
-    }
-  else{
-    alert("Your Requested exceeded");
-  }
+    
+ 
   }
   console.log(cart);
 

@@ -13,7 +13,7 @@ function ItemsTable(props) {
   // console.log(cart)
   const addItem=(element)=>{
     const itemsList={
-      id:element.target.id,
+      id:parseInt(element.target.id),
       quantity:parseInt(element.target.value)
     };
     const cpItemsarray = itemsarray;
@@ -22,15 +22,15 @@ function ItemsTable(props) {
     console.log(cpItemsarray);
 
     setItemsArray(cpItemsarray);
-    // console.log(itemsList);
-    // console.log(itemsarray);
+    console.log(itemsList);
+    console.log(itemsarray);
   }
 
 
    const addCart=(stock,product)=>{
     console.log(product.id);
     itemsarray.map((items)=>{
-      if(items.id==product.id){
+      if(items.id===product.id){
         if(items.quantity<=stock && items.quantity>0 ){
           if(cart.length===0){
             product.quantity=items.quantity;
@@ -50,7 +50,7 @@ function ItemsTable(props) {
                 type: "CHANGE_CART_QUANTITY",
                 payload:{
                   id:product.id,
-                  quantity:items.quantity
+                  quantity:product.quantity
                 }
               })
               )
