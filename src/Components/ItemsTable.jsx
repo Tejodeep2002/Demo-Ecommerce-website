@@ -9,9 +9,6 @@ function ItemsTable(props) {
   const { state:{ cart },dispatch} = CartState();
   const [itemsarray,setItemsArray] = useState([])
 
-  // let itemsList=[];
-
- 
 
   // console.log(cart)
   const addItem=(element)=>{
@@ -40,29 +37,26 @@ function ItemsTable(props) {
             dispatch({
               type: "ADD_TO_CART",
               payload: product
-            })
-          }
-          cart.map(c=>{
-            if(c.id!==product.id ){
-              product.quantity=items.quantity
+            });
+          };
+          product.quantity=items.quantity;
+          cart.some(c=>c.id!==product.id ) ?(
               dispatch({
                 type: "ADD_TO_CART",
                 payload: product
-              })}
-              else{
-              // dispatch({
-              //   type: "CHANGE_CART_QUANTITY",
-              //   payload:{
-              //     id:product.id,
-              //     quantity:items.quantity
-              //   }
-              // })
-              console.log("Cart item quantity update")
-            }
-          });
+              })
+              ):(              
+              dispatch({
+                type: "CHANGE_CART_QUANTITY",
+                payload:{
+                  id:product.id,
+                  quantity:items.quantity
+                }
+              })
+              )
         }
         else{
-          alert("Your Requested exceeded");
+          alert("Your requested item pieces is too much");
         }
       }
       else{
