@@ -4,7 +4,7 @@ import { BsCart3 ,BsEmojiSmileFill } from 'react-icons/bs'
 import { ImSad2 } from 'react-icons/im'
 import { CartState } from '../context/Context';
 
-function ItemsTable(props) {
+function ItemsTable(props){
 
   const { state:{ cart },dispatch} = CartState();
   const [itemsarray,setItemsArray] = useState([]);
@@ -19,7 +19,7 @@ function ItemsTable(props) {
       quantity:parseInt(element.target.value)
     };
     const cpItemsarray = itemsarray;
-    console.log(cpItemsarray )
+    console.log(cpItemsarray);
     cpItemsarray[element.target.id-1]=itemsList;
     console.log(cpItemsarray);
 
@@ -28,54 +28,40 @@ function ItemsTable(props) {
     console.log(itemsarray);
   }
 
-
-   const addCart=(stock,product)=>{
+  const addCart=(stock, product)=> {
     console.log(product.id);
     itemsarray.map((items)=>{
-      if(items.id===product.id){
-        if(items.quantity<=stock && items.quantity>0 ){
-          checkedMark.map(e=>e.id===product.id ?(
-            (e.checked===true)? (
-
-              if(cart.length===0){
-            product.quantity=items.quantity;
+      if(items.id === product.id) {
+        if (items.quantity <= stock && items.quantity > 0) {
+          product.quantity = items.quantity;
+          if (cart.length === 0) {
             dispatch({
               type: "ADD_TO_CART",
               payload: product
             });
           };
-          product.quantity=items.quantity;
-          cart.some(c=>c.id!==product.id ) ?(
-              dispatch({
-                type: "ADD_TO_CART",
-                payload: product
-              })
-              ):(              
-              dispatch({
-                type: "CHANGE_CART_QUANTITY",
-                payload:{
-                  id:product.id,
-                  quantity:product.quantity
-                }
-              })
-              )
-            )
-          ):()
-            
-            )
-          
-        }
-        else{
-          alert("Your requested item pieces is too much");
+          cart.some(c => c.id !== product.id) ? (
+            dispatch({
+              type: "ADD_TO_CART",
+              payload: product
+            })
+          ) : (
+            dispatch({
+              type: "CHANGE_CART_QUANTITY",
+              payload: {
+                id: product.id,
+                quantity: product.quantity
+              }
+            })
+          );
         }
       }
-      else{
-        console.log(product.id);
-        console.log(items.id);
+      else {
+        alert("Your requested item pieces is too much");
       }
-      
-    }) 
+    });
   }
+
   const checkbox =(element)=>{
   const checkedList={
     id:parseInt(element.target.id),
@@ -91,11 +77,12 @@ function ItemsTable(props) {
   console.log(checkedMark);
   }
   
+  
 
 
   return (
     <>
-        <div className='table_area'>                  
+      <div className='table_area'>                  
               <table className='content-table'>
               <thead>
                 <tr>
@@ -121,10 +108,10 @@ function ItemsTable(props) {
                                 className='cartUpdate' 
                                 id={product.id} 
                                 onChange={addItem} 
-                                // value={cart.map((items)=>
-                                //   items.id===product.id ? items.quantity : itemsarray.map(e=>
-                                //     e.id===product.id ? e.quantity : null
-                                // ))}
+                                value={cart.map((items)=>
+                                  items.id===product.id ? items.quantity : itemsarray.map(e=>
+                                    e.id===product.id ? e.quantity : null
+                                ))}
                               />
                               {(product.quantity>0)? (
                                 <button className='cart-btn' onClick={()=>addCart(product.instock,product)} ><BsCart3 color="white"/></button>
