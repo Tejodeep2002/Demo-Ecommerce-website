@@ -8,6 +8,7 @@ function ItemsTable(props) {
 
   const { state:{ cart },dispatch} = CartState();
   const [itemsarray,setItemsArray] = useState([]);
+  const [checkedMark,setCheckedMark] = useState([]);
 
 
 
@@ -33,7 +34,10 @@ function ItemsTable(props) {
     itemsarray.map((items)=>{
       if(items.id===product.id){
         if(items.quantity<=stock && items.quantity>0 ){
-          if(cart.length===0){
+          checkedMark.map(e=>e.id===product.id ?(
+            (e.checked===true)? (
+
+              if(cart.length===0){
             product.quantity=items.quantity;
             dispatch({
               type: "ADD_TO_CART",
@@ -55,6 +59,11 @@ function ItemsTable(props) {
                 }
               })
               )
+            )
+          ):()
+            
+            )
+          
         }
         else{
           alert("Your requested item pieces is too much");
@@ -67,11 +76,21 @@ function ItemsTable(props) {
       
     }) 
   }
+  const checkbox =(element)=>{
+  const checkedList={
+    id:parseInt(element.target.id),
+    checked:element.target.checked
+  };
+  const cpcheckedMark = checkedMark;
+  
+  cpcheckedMark[element.target.id-1]=checkedList;
+  console.log(cpcheckedMark);
 
-  const checked=(element)=>{
-    console.log(element);
-
+  setCheckedMark(cpcheckedMark);
+  console.log(checkedList);
+  console.log(checkedMark);
   }
+  
 
 
   return (
@@ -98,13 +117,21 @@ function ItemsTable(props) {
                       <td>${product.price}</td>
                       <td>
                       <div className='dataKart'>
-                              <input type="number" className='cartUpdate' id={product.id} onChange={addItem}/>
+                              <input type="number" 
+                                className='cartUpdate' 
+                                id={product.id} 
+                                onChange={addItem} 
+                                // value={cart.map((items)=>
+                                //   items.id===product.id ? items.quantity : itemsarray.map(e=>
+                                //     e.id===product.id ? e.quantity : null
+                                // ))}
+                              />
                               {(product.quantity>0)? (
                                 <button className='cart-btn' onClick={()=>addCart(product.instock,product)} ><BsCart3 color="white"/></button>
                               ):(
                                 <button className='cart-btn-dis' disabled="disabled" ><BsCart3 color="white"/></button>
                               )}
-                              <input type="checkbox" id={product} onChange={checked}/>
+                              <input type="checkbox" id={product.id} onChange={checkbox} />
                       </div>
                       </td>
                   </tr>
