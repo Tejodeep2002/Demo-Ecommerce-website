@@ -7,7 +7,8 @@ import { CartState } from '../context/Context';
 function ItemsTable(props) {
 
   const { state:{ cart },dispatch} = CartState();
-  const [itemsarray,setItemsArray] = useState([])
+  const [itemsarray,setItemsArray] = useState([]);
+
 
 
   // console.log(cart)
@@ -66,6 +67,13 @@ function ItemsTable(props) {
       
     }) 
   }
+
+  const checked=(element)=>{
+    console.log(element);
+
+  }
+
+
   return (
     <>
         <div className='table_area'>                  
@@ -96,7 +104,7 @@ function ItemsTable(props) {
                               ):(
                                 <button className='cart-btn-dis' disabled="disabled" ><BsCart3 color="white"/></button>
                               )}
-                              <input type="checkbox" />
+                              <input type="checkbox" id={product} onChange={checked}/>
                       </div>
                       </td>
                   </tr>
