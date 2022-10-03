@@ -62,6 +62,7 @@ function ItemsTable(props){
   })
   }
   
+
   return (
     <>
       <div className='table_area'>                  
