@@ -7,16 +7,15 @@ import { CartState } from '../context/Context';
 function ItemsTable(props) {
 
   const { state:{ cart },dispatch} = CartState();
-  const [itemsarray,setItemsArray] = useState([])
+  const [itemsarray,setItemsArray] = useState([]);
+  const [checkedMark,setCheckedMark] = useState([]);
 
-  // let itemsList=[];
 
- 
 
   // console.log(cart)
   const addItem=(element)=>{
     const itemsList={
-      id:element.target.id,
+      id:parseInt(element.target.id),
       quantity:parseInt(element.target.value)
     };
     const cpItemsarray = itemsarray;
@@ -25,44 +24,49 @@ function ItemsTable(props) {
     console.log(cpItemsarray);
 
     setItemsArray(cpItemsarray);
-    // console.log(itemsList);
-    // console.log(itemsarray);
+    console.log(itemsList);
+    console.log(itemsarray);
   }
 
 
    const addCart=(stock,product)=>{
     console.log(product.id);
     itemsarray.map((items)=>{
-      if(items.id==product.id){
+      if(items.id===product.id){
         if(items.quantity<=stock && items.quantity>0 ){
-          if(cart.length===0){
+          checkedMark.map(e=>e.id===product.id ?(
+            (e.checked===true)? (
+
+              if(cart.length===0){
             product.quantity=items.quantity;
             dispatch({
               type: "ADD_TO_CART",
               payload: product
-            })
-          }
-          cart.map(c=>{
-            if(c.id!==product.id ){
-              product.quantity=items.quantity
+            });
+          };
+          product.quantity=items.quantity;
+          cart.some(c=>c.id!==product.id ) ?(
               dispatch({
                 type: "ADD_TO_CART",
                 payload: product
-              })}
-              else{
-              // dispatch({
-              //   type: "CHANGE_CART_QUANTITY",
-              //   payload:{
-              //     id:product.id,
-              //     quantity:items.quantity
-              //   }
-              // })
-              console.log("Cart item quantity update")
-            }
-          });
+              })
+              ):(              
+              dispatch({
+                type: "CHANGE_CART_QUANTITY",
+                payload:{
+                  id:product.id,
+                  quantity:product.quantity
+                }
+              })
+              )
+            )
+          ):()
+            
+            )
+          
         }
         else{
-          alert("Your Requested exceeded");
+          alert("Your requested item pieces is too much");
         }
       }
       else{
@@ -72,6 +76,23 @@ function ItemsTable(props) {
       
     }) 
   }
+  const checkbox =(element)=>{
+  const checkedList={
+    id:parseInt(element.target.id),
+    checked:element.target.checked
+  };
+  const cpcheckedMark = checkedMark;
+  
+  cpcheckedMark[element.target.id-1]=checkedList;
+  console.log(cpcheckedMark);
+
+  setCheckedMark(cpcheckedMark);
+  console.log(checkedList);
+  console.log(checkedMark);
+  }
+  
+
+
   return (
     <>
         <div className='table_area'>                  
@@ -96,13 +117,21 @@ function ItemsTable(props) {
                       <td>${product.price}</td>
                       <td>
                       <div className='dataKart'>
-                              <input type="number" className='cartUpdate' id={product.id} onChange={addItem}/>
+                              <input type="number" 
+                                className='cartUpdate' 
+                                id={product.id} 
+                                onChange={addItem} 
+                                // value={cart.map((items)=>
+                                //   items.id===product.id ? items.quantity : itemsarray.map(e=>
+                                //     e.id===product.id ? e.quantity : null
+                                // ))}
+                              />
                               {(product.quantity>0)? (
                                 <button className='cart-btn' onClick={()=>addCart(product.instock,product)} ><BsCart3 color="white"/></button>
                               ):(
                                 <button className='cart-btn-dis' disabled="disabled" ><BsCart3 color="white"/></button>
                               )}
-                              <input type="checkbox" />
+                              <input type="checkbox" id={product.id} onChange={checkbox} />
                       </div>
                       </td>
                   </tr>
