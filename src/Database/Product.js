@@ -16,7 +16,7 @@ const products = [
     {
         id:2,
         name: "Grey Ninja",
-        image: "./images/hoodie-2.jpg",
+        image: "./images/Hoodie-2.jpg",
         price: "35.00",
         category:"hoodie",
         description:{
