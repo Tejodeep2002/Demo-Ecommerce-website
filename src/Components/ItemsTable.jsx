@@ -8,7 +8,7 @@ function ItemsTable(props){
 
   const { state:{ cart },dispatch} = CartState();
   const [itemsarray,setItemsArray] = useState([]);
-  const [checkedMark,setCheckedMark] = useState([]);
+  const [tempCartArray,setTempCartArray] = useState([]);
 
 
 
@@ -28,53 +28,90 @@ function ItemsTable(props){
     console.log(itemsarray);
   }
 
-  const addCart=(stock, product)=> {
+
+  const addTempCart=(product)=> {
     console.log(product.id);
     itemsarray.map((items)=>{
       if(items.id === product.id) {
-        if (items.quantity <= stock && items.quantity > 0) {
+        if(items.quantity <= product.instock && items.quantity > 0) {
           product.quantity = items.quantity;
-          if (cart.length === 0) {
-            dispatch({
-              type: "ADD_TO_CART",
-              payload: product
-            });
-          };
-          cart.some(c => c.id !== product.id) ? (
-            dispatch({
-              type: "ADD_TO_CART",
-              payload: product
-            })
-          ) : (
-            dispatch({
-              type: "CHANGE_CART_QUANTITY",
-              payload: {
-                id: product.id,
-                quantity: product.quantity
-              }
-            })
-          );
+          const cpTempCartArray = tempCartArray;
+          cpTempCartArray[product.id-1]=product;
+          console.log(cpTempCartArray);
+          setTempCartArray(cpTempCartArray);
+          alert(`Item ${product.name}-${product.description.color} (${product.quantity}) Added`)
         }
-      }
-      else {
-        alert("Your requested item pieces is too much");
+        else {
+          alert("Your requested item pieces is too much. please put some \n minimal value");
+        }
       }
     });
   }
+
+
+
 
   const checkbox =(element)=>{
   const checkedList={
     id:parseInt(element.target.id),
     checked:element.target.checked
   };
-  const cpcheckedMark = checkedMark;
-  
-  cpcheckedMark[element.target.id-1]=checkedList;
-  console.log(cpcheckedMark);
 
-  setCheckedMark(cpcheckedMark);
-  console.log(checkedList);
-  console.log(checkedMark);
+  tempCartArray.map((items)=>{
+    if(items.id === checkedList.id){
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: items
+      });
+    }
+  })
+
+
+
+
+
+
+
+
+  // props.products.map((product)=>{
+  //   if(checkedList.id===product.id && checkedList.checked===true){
+  //     console.log(product.instock);
+  //   itemsarray.map((items)=>{
+  //     if(items.id === product.id){
+  //       if(items.quantity <= product.instock && items.quantity > 0){
+  //         product.quantity = items.quantity;
+  //         if (cart.length === 0) {
+  //           dispatch({
+  //             type: "ADD_TO_CART",
+  //             payload: product
+  //           });
+  //         };
+  //         cart.some(c => c.id !== product.id) ? (
+  //           dispatch({
+  //             type: "ADD_TO_CART",
+  //             payload: product
+  //           })
+  //         ) : (
+  //           dispatch({
+  //             type: "CHANGE_CART_QUANTITY",
+  //             payload: {
+  //               id: product.id,
+  //               quantity: product.quantity
+  //             }
+  //           })
+  //         );
+        
+  //       }
+  //       else {
+  //         alert("Your requested item pieces is too much");
+  //       }
+  //     }
+  //   })
+  //   }
+  // })
+
+
+
   }
   
   
@@ -108,17 +145,20 @@ function ItemsTable(props){
                                 className='cartUpdate' 
                                 id={product.id} 
                                 onChange={addItem} 
-                                value={cart.map((items)=>
-                                  items.id===product.id ? items.quantity : itemsarray.map(e=>
-                                    e.id===product.id ? e.quantity : null
-                                ))}
+                                // value={itemsarray.map((items)=>
+                                //   items.id===product.id ? items.quantity : "5"
+                                // )}
                               />
                               {(product.quantity>0)? (
-                                <button className='cart-btn' onClick={()=>addCart(product.instock,product)} ><BsCart3 color="white"/></button>
+                                <button className='cart-btn' onClick={()=>addTempCart(product)} ><BsCart3 color="white"/></button>
                               ):(
                                 <button className='cart-btn-dis' disabled="disabled" ><BsCart3 color="white"/></button>
                               )}
-                              <input type="checkbox" id={product.id} onChange={checkbox} />
+                              <input type="checkbox" 
+                                      id={product.id} 
+                                      onChange={checkbox} 
+                                      // {cart.map(e=>e.id===product.id ? checked : null)}
+                                      />
                       </div>
                       </td>
                   </tr>
