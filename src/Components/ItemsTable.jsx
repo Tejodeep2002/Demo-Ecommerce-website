@@ -18,25 +18,25 @@ function ItemsTable(props){
       quantity:parseInt(element.target.value)
     };
     const cpItemsarray = itemsarray;
-    console.log(cpItemsarray);
+    // console.log(cpItemsarray);
     cpItemsarray[element.target.id-1]=itemsList;
-    console.log(cpItemsarray);
+    // console.log(cpItemsarray);
 
     setItemsArray(cpItemsarray);
-    console.log(itemsList);
-    console.log(itemsarray);
+    // console.log(itemsList);
+    // console.log(itemsarray);
   }
 
 
   const addTempCart=(product)=> {
-    console.log(product.id);
+    // console.log(product.id);
     itemsarray.map((items)=>{
       if(items.id === product.id) {
         if(items.quantity <= product.instock && items.quantity > 0) {
           product.quantity = items.quantity;
           const cpTempCartArray = tempCartArray;
           cpTempCartArray[product.id-1]=product;
-          console.log(cpTempCartArray);
+          // console.log(cpTempCartArray);
           setTempCartArray(cpTempCartArray);
           alert(`Item ${product.name}-${product.description.color} (${product.quantity}) Added\n now press the check box to add summery page`)
         }
@@ -46,7 +46,6 @@ function ItemsTable(props){
       }
     });
   }
-
 
   const checkbox =(element)=>{
   const checkedList={
@@ -61,10 +60,8 @@ function ItemsTable(props){
       });
     }
   })
-
   }
   
-
   return (
     <>
       <div className='table_area'>                  

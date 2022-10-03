@@ -42,7 +42,7 @@ function CheckoutList() {
     
  
   }
-  console.log(cart);
+  // console.log(cart);
 
   return (
     <>
