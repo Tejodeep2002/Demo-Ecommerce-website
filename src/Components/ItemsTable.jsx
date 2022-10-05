@@ -11,6 +11,8 @@ function ItemsTable(props){
   const [tempCartArray,setTempCartArray] = useState([]);
 
 
+  //input items quantity LOgic 
+
   // console.log(cart)
   const addItem=(element)=>{
     const itemsList={
@@ -28,6 +30,7 @@ function ItemsTable(props){
   }
 
 
+  //Cart button Logic
   const addTempCart=(product)=> {
     // console.log(product.id);
     itemsarray.map((items)=>{
@@ -47,6 +50,8 @@ function ItemsTable(props){
     });
   }
 
+  //Checkbox Logic
+
   const checkbox =(element)=>{
   const checkedList={
     id:parseInt(element.target.id),
@@ -54,13 +59,18 @@ function ItemsTable(props){
   };
   tempCartArray.map((items)=>{
     if(items.id === checkedList.id){
-      dispatch({
-        type: "ADD_TO_CART",
-        payload: items
-      });
+      if(checkedList.checked==true){
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: items
+        });
+      }
+      
     }
   })
   }
+
+
   
 
   return (

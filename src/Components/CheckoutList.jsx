@@ -13,6 +13,7 @@ function CheckoutList() {
   },[cart]);
 
 
+  //Product Increment Logic
   const increment=(product)=>{
     if(product.quantity<product.instock){
       product.quantity=(parseInt(product.quantity)+1)
@@ -29,6 +30,7 @@ function CheckoutList() {
   }
   }
 
+  //Product Decrement Logic
   const decrement=(product)=>{
     // if(product.quantity>product.instock ){
     product.quantity=(parseInt(product.quantity)-1)
